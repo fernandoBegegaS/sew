@@ -1,0 +1,174 @@
+/*Fernando Begega Suarez UO295286*/
+
+/*
+
+color: B30000
+
+*/
+
+body {
+    font-family: "Arial", "Arial Narrow", "Arial Rounded MT Bold", "Century Gothic", "Calibri", sans-serif;
+    background-color: #dadada;
+    color: #000000;
+}
+
+
+
+p.migas{
+    font-size: 12px;
+}
+
+
+
+
+ @media (max-width: 768px) {
+
+    .migas {
+        display: none; /* Oculta las migas de navegación en pantallas pequeñas */
+    }
+        header{
+            flex-direction: column;
+        }
+        nav {
+            flex-wrap: wrap  /* Colocar enlaces en columna en dispositivos móviles */
+        }
+    
+        
+    }
+
+h1{
+    font-weight: 700;
+    margin: 20px;
+}
+
+header {
+    background-color: #B30000; /* Rojo vibrante */
+    color: #ffffff; /* Texto en blanco para hacer contraste */
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+header a:hover{
+    color: #ffffff;
+}
+
+header a{
+    color: #ffffff; /* Gris claro para los enlaces del menú de navegación */
+    text-decoration: none; /* Quitar subrayado por defecto en los enlaces */
+}
+
+nav a:hover, nav a:focus{
+    text-decoration: underline;
+}
+
+nav a.active{
+    font-weight: 900;
+}
+
+
+ul{
+    list-style-type: circle;
+    list-style-position: outside;
+}
+ol{
+    list-style-type: upper-roman;
+}
+
+dt{
+    font-weight: 600;
+    border-width: 1px;         
+    border-style: solid;       
+    border-color: #000000;
+    
+    width: fit-content;
+    margin: 10px;
+}
+
+
+table caption{
+    margin: 10px;
+    font-weight: 700;
+}
+table{
+    border-collapse: collapse;
+    border-width: 1px;         
+    border-style: solid;       
+    border-color: #000000;
+    box-shadow: 0 2px 10px #000000;
+    margin: 20px;
+}
+
+
+tr:hover {
+    background-color: #adadad; /* Color de fondo gris claro al pasar el ratón */
+}
+
+th{
+    border-width: 1px;         
+    border-style: solid;       
+    border-color: #000000;
+}
+
+td{
+    border-width: 1px;         
+    border-style: solid;       
+    border-color: #000000;
+}
+
+
+/* Seleccionamos el nav que es hijo directo de section */
+section > nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Espaciado entre los enlaces */
+    flex-wrap: wrap;  /* Asegura que los enlaces se ajusten en pantallas pequeñas */
+    margin: 0 auto;
+}
+
+/* Estilo para los enlaces dentro del nav hijo de section */
+section > nav a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #003E80; /* Azul vibrante */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Cambio de color de fondo al pasar el ratón */
+section > nav a:hover {
+    background-color: #003E80; /* Azul más oscuro */
+    transform: translateY(-2px);  /* Efecto de levantamiento */
+}
+
+/* Cambio de color al estar en foco */
+section > nav a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Resaltado con un borde de color */
+}
+
+/* Estilo para dispositivos pequeños */
+@media (max-width: 600px) {
+    section > nav {
+        flex-direction: column;  /* Apilar los enlaces verticalmente */
+    }
+}
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+

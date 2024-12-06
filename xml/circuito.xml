@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Circuitos SYSTEM "circuito.dtd">
+
+<Circuitos>
+<Circuito>
+    <!-- Datos generales del circuito -->
+    <NombreCircuito>Zandvoort</NombreCircuito>
+    <LongitudCircuito unidades="km">4.259</LongitudCircuito>
+    <AnchuraMediaPista unidades="m">10</AnchuraMediaPista>
+    <FechaCarrera>2024-09-01</FechaCarrera>
+    <HoraInicioEspaña>15:00</HoraInicioEspaña>
+    <NumeroVueltas>72</NumeroVueltas>
+    <Localidad>Zandvoort</Localidad>
+    <Pais>Países Bajos</Pais>
+
+    <!-- Referencias -->
+    <Referencias>
+        <Referencia>
+            <URL>https://www.formula1.com/en/racing/2024/Netherlands.html</URL>
+        </Referencia>
+        <Referencia>
+            <URL>https://es.wikipedia.org/wiki/Circuito_de_Zandvoort</URL>
+        </Referencia>
+        <Referencia>
+            <URL>https://www.racefans.net/f1-information/going-to-a-race/dutch-grand-prix-at-zandvoort/</URL>
+        </Referencia>
+    </Referencias>
+
+    <!-- Galería de fotografías -->
+    <GaleriaFotografias>
+        <Fotografia archivo="Sectores.jpg">Sectores</Fotografia>
+        <Fotografia archivo="Curva.jpg">Curva</Fotografia>
+    </GaleriaFotografias>
+
+    <!-- Galería de vídeos -->
+    <GaleriaVideos>
+        <Video archivo="Video3D.mp4">Vuelta completa al circuito</Video>
+    </GaleriaVideos>
+
+    <!-- Coordenadas de la línea de salida -->
+    <CoordenadasLineaSalida>
+        <Latitud unidades="grados">52.38973166691918</Latitud>
+        <Longitud unidades="grados">4.541319582806471</Longitud>
+        <Altitud unidades="m">16</Altitud>
+    </CoordenadasLineaSalida>
+
+    <!-- Tramos del circuito -->
+
+   <Tramo>
+            <Distancia unidades="m">100</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.39179545792096</Latitud>
+                <Longitud unidades="grados">4.543417899196314</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">100</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38919985457926</Latitud>
+                <Longitud unidades="grados">4.542871829276532</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">100</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38835065458435</Latitud>
+                <Longitud unidades="grados">4.541142209931024</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">430</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38827277668089</Latitud>
+                <Longitud unidades="grados">4.546958464569617</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>2</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">230</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38894113003694</Latitud>
+                <Longitud unidades="grados">4.549373389531119</Longitud>
+                <Altitud unidades="m">16</Altitud>
+            </CoordenadasFinales>
+            <Sector>2</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">200</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.3883140280625</Latitud>
+                <Longitud unidades="grados">4.552966511650139</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>2</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">300</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38573856042974</Latitud>
+                <Longitud unidades="grados">4.550947501121114</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>2</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">270</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38648986774366</Latitud>
+                <Longitud unidades="grados">4.548141190104107</Longitud>
+                <Altitud unidades="m">20</Altitud>
+            </CoordenadasFinales>
+            <Sector>2</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">150</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38778482923022</Latitud>
+                <Longitud unidades="grados">4.551035871989537</Longitud>
+                <Altitud unidades="m">20</Altitud>
+            </CoordenadasFinales>
+            <Sector>1</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">400</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38743698576371</Latitud>
+                <Longitud unidades="grados">4.544502185090964</Longitud>
+                <Altitud unidades="m">24</Altitud>
+            </CoordenadasFinales>
+            <Sector>1</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">150</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38711641911867</Latitud>
+                <Longitud unidades="grados">4.543134226156416</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>1</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">290</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38745762933378</Latitud>
+                <Longitud unidades="grados">4.542336658826216</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>1</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">268</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38457634644304</Latitud>
+                <Longitud unidades="grados">4.542393403342322</Longitud>
+                <Altitud unidades="m">15</Altitud>
+            </CoordenadasFinales>
+            <Sector>1</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">140</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.3843918</Latitud>
+                <Longitud unidades="grados">4.5402828</Longitud>
+                <Altitud unidades="m">18</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+        <Tramo>
+            <Distancia unidades="m">100</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38523151602487</Latitud>
+                <Longitud unidades="grados">4.53878211970861</Longitud>
+                <Altitud unidades="m">16</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+
+        <Tramo>
+            <Distancia unidades="m">520</Distancia>
+            <CoordenadasFinales>
+                <Latitud unidades="grados">52.38973166691918</Latitud>
+                <Longitud unidades="grados">4.541319582806471</Longitud>
+                <Altitud unidades="m">17</Altitud>
+            </CoordenadasFinales>
+            <Sector>3</Sector>
+        </Tramo>
+
+
+
+</Circuito>
+</Circuitos>

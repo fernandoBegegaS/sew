@@ -1,0 +1,57 @@
+
+
+section {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+article {
+    flex: 0 0 25%;
+    width: 170px;
+    height: 200px;
+    margin: 5px;
+    transform: scale(1);
+}
+
+article h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+article[data-state=flip] {
+    transform: rotateY(180deg);
+}
+
+article[data-state=revealed] {
+    transform: rotateY(180deg);
+}
+
+article h3,
+article img {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    background: #1C7CCC;
+    backface-visibility: hidden;
+}
+
+article img {
+    transform: rotateY(180deg);
+}
+
+article {
+    transform: scale(1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}

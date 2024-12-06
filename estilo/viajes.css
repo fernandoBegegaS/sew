@@ -1,0 +1,101 @@
+article.carrusel {
+  margin-left: 25%;
+  width: 100%;
+  max-width: 100vh; /* Controla el ancho máximo del carrusel */
+  height: 70vh; /* Establece una altura fija para uniformidad */
+  position: relative;
+  overflow: hidden; /* Oculta cualquier contenido que desborde */
+  border-radius: 1em;
+}
+
+article.carrusel h3 {
+  top: 1%;
+  left: 50%;
+  position: absolute; 
+  transform: translateX(-50%); /* Centra horizontalmente */
+  color: white;
+  font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  z-index: 5;
+}
+
+article.carrusel img {
+  width: 100%; /* Hace que las imágenes llenen horizontalmente el contenedor */
+  height: 100%; /* Hace que las imágenes llenen verticalmente el contenedor */
+  object-fit: cover; /* Ajusta la imagen sin distorsionar, recortando si es necesario */
+  transition: all 0.5s ease; /* Suaviza las transiciones al cambiar de imagen */
+  border-radius: 0.5em; /* Aplica bordes redondeados */
+  z-index: 1; /* Asegura que estén detrás de otros elementos */
+  position: absolute; /* Posiciona las imágenes dentro del contenedor */
+}
+
+article.carrusel button {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+article.carrusel button:active {
+  transform: scale(1.1);
+}
+
+article.carrusel button:nth-of-type(2) {
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+}
+
+article.carrusel button:nth-of-type(1) {
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+}
+
+
+article:has(img) {
+  display: grid;                 
+  place-items: center;           
+  height: auto;                 
+}
+
+article img {
+  max-width: 80%;  
+  height: auto;  
+  margin-bottom: 10%; 
+}
+
+
+article:has(div) {
+  display: grid;                 
+  place-items: center;           
+  height: auto;                 
+}
+
+article > div {
+  width: 80%;  
+  height: 60vh;  
+}
+
+main >  p {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-left: 5px solid #B30000; /* Borde izquierdo en color rojo */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
