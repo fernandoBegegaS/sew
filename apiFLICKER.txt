@@ -1,0 +1,7 @@
+	sew
+Clave:
+41f4017ceadadfd2f4e6c6f77529e271
+Weather:
+98f3fc1bf6134541332f676c5c9c131
+Secreto:
+829d01ad6f1b8c4a
