@@ -1,47 +1,83 @@
 class Noticias {
     constructor() {
-        if (window.File && window.FileReader && window.FileList && window.Blob) 
-    {  
-        document.write("<p>Este navegador soporta el API File </p>");
-    }
-        else document.write("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>");
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            document.write("<p>Este navegador soporta el API File</p>");
+        } else {
+            document.write("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>");
+        }
     }
 
     async readInputFile(files) {
-        var archivo = files[0];
+        const archivo = files[0];
         const tipoTexto = /text.*/;
-        
 
         if (archivo.type.match(tipoTexto)) {
-            const lector = new FileReader();
+            const lector = new FileReader(); 
 
-            lector.onload = (evento) => {
-                const noticias = lector.result.split("_");
+            lector.onload = () => {
+                const lineas = lector.result.split("\n"); 
 
-                const mainElement = document.querySelector("section");
-                mainElement.innerHTML = ""; 
+                const mainElement = document.querySelector("main");
 
-                noticias.forEach((noticia) => {
-                    const article = document.createElement("article");
-                    const p = document.createElement("p");
+                let sectionElement = mainElement.querySelector("section");
+                
 
-                    p.textContent = noticia;
+                sectionElement.innerHTML = ""; 
 
-                    article.appendChild(p);
-                    mainElement.appendChild(article);
+                const h3Element = document.createElement("h3");
+                h3Element.textContent = "Últimas noticias";
+                sectionElement.appendChild(h3Element);
+
+                
+                lineas.forEach((linea, index) => {
+                    if (linea.trim() !== "") {
+                        const partes = linea.split("_"); 
+
+                        
+                        if (partes.length === 3) {
+                            const [titulo, contenido, autor] = partes;
+
+                            
+                            const article = document.createElement("article");
+
+                            const h2 = document.createElement("h2");
+                            h2.textContent = titulo;
+
+                            const pContenido = document.createElement("p");
+                            pContenido.textContent = contenido;
+
+                            const pAutor = document.createElement("p");
+                            pAutor.innerHTML = `Autor: <small>${autor}</small>`;
+
+                           
+                            article.appendChild(h2);
+                            article.appendChild(pContenido);
+                            article.appendChild(pAutor);
+
+                           
+                            sectionElement.appendChild(article);
+
+
+                            const mainElement = document.querySelector("main");
+                            const prevParagraph = mainElement.previousElementSibling;
+                            prevParagraph.textContent = "";
+                        } 
+                    }
                 });
             };
 
+            
             lector.readAsText(archivo);
         } else {
-            console.error("Error: ¡Archivo no válido!");
-            const errorArchivo = document.getElementById("errorArchivo");
-            if (errorArchivo) {
-                errorArchivo.textContent = "Error: ¡Archivo no válido!";
-            }
+            const mainElement = document.querySelector("main");
+            const prevParagraph = mainElement.previousElementSibling;
+            prevParagraph.textContent = "Tipo de archivo invalido";
+
+         
+            
         }
     }
 }
 
-const noticias = new Noticias();
 
+const noticias = new Noticias();

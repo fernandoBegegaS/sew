@@ -1,10 +1,9 @@
 class Agenda {
     constructor(url) {
-      this.url = url;
+        this.url = url;
     }
   
     obtenerCarreras() {
-        // Llamada AJAX para obtener los datos
         $.ajax({
             url: this.url,
             method: "GET",
@@ -17,34 +16,28 @@ class Agenda {
                 return;
             }
 
-            // Limpiar el contenido anterior antes de mostrar nuevas carreras
-            $("body").find("#carreras-container").remove();
+            $("body").find("section").remove();
 
-            // Contenedor para las carreras
-            const container = $("<div>").attr("id", "carreras-container");
+            const section = $("<section>");
+            const header = $("<h2>").text("Calendario de Carreras");
+            section.append(header);
 
             carreras.forEach(race => {
-                const art = $("<article>").addClass("carrera");
+                const article = $("<article>");
+                article.append($("<h3>").text(race.raceName));
 
-                // Nombre de la carrera como un <h3>
-                art.append($("<h3>").text(race.raceName));
+                article.append($("<p>").text(`Fecha: ${race.date}`));
+                article.append($("<p>").text(`Hora: ${race.time || "No especificada"}`));
 
-                // Fecha y hora de la carrera
-                art.append($("<p>").text(`Fecha: ${race.date}`));
-                art.append($("<p>").text(`Hora: ${race.time || "No especificada"}`));
+                article.append($("<p>").text(`Circuito: ${race.Circuit.circuitName}`));
+                article.append($("<p>").text(`País: ${race.Circuit.Location.country}`));
+                article.append($("<p>").text(`Latitud: ${race.Circuit.Location.lat}`));
+                article.append($("<p>").text(`Longitud: ${race.Circuit.Location.long}`));
 
-                // Información del circuito
-                art.append($("<p>").text(`Circuito: ${race.Circuit.circuitName}`));
-                art.append($("<p>").text(`País: ${race.Circuit.Location.country}`));
-                art.append($("<p>").text(`Latitud: ${race.Circuit.Location.lat}`));
-                art.append($("<p>").text(`Longitud: ${race.Circuit.Location.long}`));
-
-                // Añadir el artículo al contenedor
-                container.append(art);
+                section.append(article);
             });
 
-            // Añadir el contenedor al cuerpo del documento
-            $("body").append(container);
+            $("body").append(section);
         }).fail((jqXHR, textStatus, errorThrown) => {
             console.error("Error al obtener los datos de la API:", textStatus, errorThrown);
             alert("No se pudieron cargar los datos. Intenta más tarde.");
@@ -52,13 +45,12 @@ class Agenda {
     }
 
     añadirEventoAlBoton() {
-        // Añadir evento click al botón
         $("button").on("click", () => {
-            this.obtenerCarreras(); // Llamar al método para obtener las carreras
+            this.obtenerCarreras(); 
         });
     }
 }
 
-// Instanciar y configurar la agenda
+
 const agenda = new Agenda("http://ergast.com/api/f1/current.json");
 agenda.añadirEventoAlBoton();

@@ -27,7 +27,7 @@ class Fondo {
         .done(function(data) {
             
 
-            const photo = data.photos.photo[0]; // Obtener la primera foto
+            const photo = data.photos.photo[0];
             const imgSrc = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
             const cssRegla = `
             <style>

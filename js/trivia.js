@@ -1,6 +1,5 @@
 class Trivia {
   constructor() {
-      // Definición de las preguntas y respuestas
       this.elements =[
         {
           "pregunta": "¿Quién ganó el Campeonato Mundial de Fórmula 1 en 2020?",
@@ -140,215 +139,176 @@ class Trivia {
       ];
 
       this.numeroPreguntas = 10;
-      this.index = 0; // Empieza desde la primera pregunta
+      this.index = 0;
       this.aciertos = 0;
       this.timeLeft = 10;
+      this.correctSound = new Audio('multimedia/audios/acierto.mp3');
+      this.errorSound = new Audio('multimedia/audios/error.mp3');
 
       $('div > span').text(""+this.timeLeft);
   }
 
   shuffleElements() {
-      for (let i = this.elements.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [this.elements[i], this.elements[j]] = [this.elements[j], this.elements[i]];
-      }
+    for (let i = this.elements.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.elements[i], this.elements[j]] = [this.elements[j], this.elements[i]];
+    }
   }
 
   construirHTMLPregunta() {
-    const pregunta = this.elements[this.index]; // Obtener la pregunta actual
+    const pregunta = this.elements[this.index];
 
-    // Eliminar el div existente, si lo hay
     $('article').find('div[data-pregunta]').remove();
 
-    // Crear el nuevo div de la pregunta
     const preguntaHTML = `
-        <div data-pregunta="${this.index}">
-            <p>${pregunta.pregunta}</p>
-            <input type="radio" name="respuesta" value="${pregunta.respuesta1}"> ${pregunta.respuesta1}<br>
-            <input type="radio" name="respuesta" value="${pregunta.respuesta2}"> ${pregunta.respuesta2}<br>
-            <input type="radio" name="respuesta" value="${pregunta.respuesta3}"> ${pregunta.respuesta3}<br>
-            <input type="radio" name="respuesta" value="${pregunta.respuesta4}"> ${pregunta.respuesta4}<br>
-            <input type="radio" name="respuesta" value="${pregunta.respuesta5}"> ${pregunta.respuesta5}<br>
-        </div>
+      <article data-pregunta="${this.index}">
+        <h4>${pregunta.pregunta}<h4>
+        <input type="radio" name="respuesta" value="${pregunta.respuesta1}"> ${pregunta.respuesta1}<br>
+        <input type="radio" name="respuesta" value="${pregunta.respuesta2}"> ${pregunta.respuesta2}<br>
+        <input type="radio" name="respuesta" value="${pregunta.respuesta3}"> ${pregunta.respuesta3}<br>
+        <input type="radio" name="respuesta" value="${pregunta.respuesta4}"> ${pregunta.respuesta4}<br>
+        <input type="radio" name="respuesta" value="${pregunta.respuesta5}"> ${pregunta.respuesta5}<br>
+      </article>
     `;
 
-    // Añadir la nueva pregunta al contenedor
     $('article').append(preguntaHTML);
-}
+  }
 
   comprobarRespuesta() {
-      const respuestaSeleccionada = $('input[name="respuesta"]:checked').val();
-      const respuestaCorrecta = this.elements[this.index]["respuestaCorrecta"];
+    const respuestaSeleccionada = $('input[name="respuesta"]:checked').val();
+    const respuestaCorrecta = this.elements[this.index]["respuestaCorrecta"];
 
-      if (respuestaSeleccionada === respuestaCorrecta) {
-          this.aciertos++;
-      } else {
-      }
+    if (respuestaSeleccionada === respuestaCorrecta) {
+      this.aciertos++;
+      this.correctSound.play(); // Reproducir sonido si acierta
+    }else{
+      this.errorSound.play();
+    }
 
-      this.mostrarSiguientePregunta(); // Pasar a la siguiente pregunta
+    this.mostrarSiguientePregunta(); // Pasar a la siguiente pregunta
   }
 
   mostrarSiguientePregunta() {
     this.index++;
     if (this.index < this.numeroPreguntas) {
-        this.construirHTMLPregunta();
+      this.construirHTMLPregunta();
     } else {
-        clearInterval(this.timer);
+      clearInterval(this.timer);
 
-        var mejor = localStorage.getItem('mejor');
+    var mejor = localStorage.getItem('mejor');
 
-        $('article').html('<p>¡Trivia completada!</p>');
-        if (this.aciertos > mejor || mejor == null) {
-            $('article').append('<p>Nuevo record personal, ha acertado ' + this.aciertos + ' de ' + this.index + '</p>');
-            localStorage.setItem('mejor', this.aciertos);
-        } else {
-            $('article').html('<p>Ha acertado ' + this.aciertos + ' de ' + this.index + '</p>');
-            $('article').append('<p>Su mejor puntuacion hasta el momento es  ' + mejor + ' aciertos</p>');
-        }
+    $('article').html('<h3>¡Trivia completada!</h3>'); 
+
+    if (this.aciertos > mejor || mejor == null) {
+      $('article').append('<p>Nuevo record personal, ha acertado ' + this.aciertos + ' de ' + this.index + '</p>');
+      localStorage.setItem('mejor', this.aciertos);
+    } else {
+      $('article').append('<p>Ha acertado ' + this.aciertos + ' de ' + this.index + '</p>');
+      $('article').append('<p>Su mejor puntuación hasta el momento es ' + mejor + ' aciertos</p>');
+}
     }
-}
-
-  // Iniciar el temporizador
-iniciarTemporizador() {
-  // Intentar obtener el tiempo restante guardado en sessionStorage
-  let tiempoGuardado = sessionStorage.getItem('tiempoRestante');
-  if (tiempoGuardado === null) {
-      this.timeLeft = 30; // Si no hay tiempo guardado, empezar con 30 segundos
-  } else {
-      this.timeLeft = parseInt(tiempoGuardado); // Usar el tiempo guardado
   }
 
-  // Mostrar el tiempo restante en la interfaz
-  $('div > span').text(`${this.timeLeft} segundos`);
+  iniciarTemporizador() {
+    let tiempoGuardado = sessionStorage.getItem('tiempoRestante');
+    if (tiempoGuardado === null || 0 >= tiempoGuardado) {
+      this.timeLeft = 10;
+    } else {
+      this.timeLeft = parseInt(tiempoGuardado);
+    }
 
-  // Detener el temporizador anterior si hay uno en ejecución
-  if (this.timer) {
+    $('div > span').text(`${this.timeLeft} segundos`);
+
+    if (this.timer) {
       clearInterval(this.timer);
-  }
+    }
 
-  // Iniciar el temporizador
-  this.timer = setInterval(() => {
-      this.timeLeft--; // Reducir el tiempo restante
-      $('div > span').text(`${this.timeLeft} segundos`);
+    this.timer = setInterval(() => {
+      this.funcionIntervalo();
+    }, 1000);
 
-      // Guardar el tiempo restante en sessionStorage
-      sessionStorage.setItem('tiempoRestante', this.timeLeft);
-
-      // Cuando el tiempo llegue a 0, pasar a la siguiente pregunta
-      if (this.timeLeft <= 0) {
-          clearInterval(this.timer);
-          sessionStorage.removeItem('tiempoRestante'); // Limpiar el tiempo guardado
-          this.mostrarSiguientePregunta();
-      }
-  }, 1000);
-
-  
-}
-
-// Reiniciar el temporizador al tiempo original
-reiniciarTemporizador() {
-  sessionStorage.setItem('tiempoRestante', this.timeLeft); // Guardar el valor reiniciado en sessionStorage
-
-  // Mostrar el tiempo en la interfaz
-  $('div > span').text(`${this.timeLeft} segundos`);
-
-  // Detener cualquier temporizador que esté corriendo
-  if (this.timer) {
-      clearInterval(this.timer);
-  }
-
-  // Iniciar un nuevo temporizador
-  this.timer = setInterval(() => {
-      this.timeLeft--;
-      $('div > span').text(`${this.timeLeft} segundos`);
-
-     
-      sessionStorage.setItem('tiempoRestante', this.timeLeft);
-
-      
-      if (this.timeLeft <= 0) {
-          clearInterval(this.timer);
-          sessionStorage.removeItem('tiempoRestante'); // Limpiar el tiempo guardado
-          this.index = this.numeroPreguntas;
-          this.mostrarSiguientePregunta();
-      }
-  }, 1000);
-
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // La página está oculta, detener el temporizador (pausar)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
         clearInterval(this.timer);
-        // Guardar el tiempo restante cuando la página se oculta
         sessionStorage.setItem('tiempoRestante', this.timeLeft);
-    } else {
-        
-        if(this.index < this.numeroPreguntas){
-          this.iniciarTemporizador(); // Reanudar desde el mismo punto
+      } else {
+        if (this.index < this.numeroPreguntas) {
+          this.reiniciarTemporizador();
         }
-        
+      }
+    });
+  }
+
+  reiniciarTemporizador() {
+    sessionStorage.setItem('tiempoRestante', this.timeLeft);
+
+    $('div > span').text(`${this.timeLeft} segundos`);
+
+    if (this.timer) {
+      clearInterval(this.timer);
     }
-});
-}
 
+    this.timer = setInterval(() => {
+      this.funcionIntervalo();
+    }, 1000);
 
+  }
 
+  funcionIntervalo(){
+    this.timeLeft--;
+      $('div > span').text(`${this.timeLeft} segundos`);
+
+      sessionStorage.setItem('tiempoRestante', this.timeLeft);
+
+      if (this.timeLeft <= 0) {
+        clearInterval(this.timer);
+        sessionStorage.removeItem('tiempoRestante');
+        this.index = this.numeroPreguntas;
+        this.mostrarSiguientePregunta();
+      }
+  }
 
   inicializrBotones() {
-    // Usando funciones de flecha para los manejadores de eventos
     $('button:contains("Iniciar")').click(() => {
-        this.iniciarTrivia();  // 'this' hace referencia al contexto del objeto que contiene este método
+      this.iniciarTrivia();
     });
-}
-
-
-
-iniciarTrivia() {
-  this.shuffleElements(); // Mezcla las preguntas
-  this.index = 0; // Empieza desde la primera pregunta
-  this.aciertos = 0;
-
-  // Eliminar el artículo existente, si lo hay
-  $('article').remove();
-
-  // Crear el nuevo artículo
-  const articleHTML = `
-      <article>
-          <button>Siguiente</button>
-      </article>
-  `;
-
-  // Añadir el artículo antes del botón existente
-  const existingButton = $('button'); // Selecciona el botón existente en el DOM
-  if (existingButton.length) {
-    existingButton.first().before(articleHTML); // Inserta el artículo antes del primer botón encontrado
-  } else {
-    // Si no hay botón existente, añadir al cuerpo
-    $('body').append(articleHTML);
   }
 
-  // Mostrar la primera pregunta dentro del nuevo artículo
-  this.construirHTMLPregunta();
+  iniciarTrivia() {
+    this.shuffleElements();
+    this.index = 0;
+    this.aciertos = 0;
 
-  // Reiniciar el temporizador
-  this.reiniciarTemporizador();
+    $('article').remove();
 
-  // Agregar manejador de eventos para el botón "Siguiente"
-  $('button:contains("Siguiente")').click(() => {
-    this.comprobarRespuesta(); // 'this' sigue refiriéndose al mismo contexto
-  });
+    const articleHTML = `
+      <article>
+       <h3>Responde rapido<h3>
+        <button>Siguiente</button>
+      </article>
+    `;
+
+    const existingButton = $('button');
+    if (existingButton.length) {
+      existingButton.first().before(articleHTML);
+    } else {
+      $('body').append(articleHTML);
+    }
+
+    this.construirHTMLPregunta();
+    this.iniciarTemporizador();
+
+    $('button:contains("Siguiente")').click(() => {
+      this.comprobarRespuesta();
+    });
+  }
+
+  guardarProgreso(aciertos, indicePregunta) {
+    localStorage.setItem('aciertos', aciertos);
+    localStorage.setItem('indicePregunta', indicePregunta);
+  }
 }
 
-
-
-
-
-   guardarProgreso(aciertos, indicePregunta) {
-    localStorage.setItem('aciertos', aciertos);         // Guardar el número de aciertos
-    localStorage.setItem('indicePregunta', indicePregunta);  // Guardar el índice de la pregunta actual
-}
-}
-
-// Crear la instancia de la trivia y comenzar
 const miTrivia = new Trivia();
 miTrivia.inicializrBotones();
+

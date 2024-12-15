@@ -58,6 +58,10 @@ class Memoria {
         this.shuffleElements();
         this.createElements();
         this.addActionListeners();
+
+        this.actualizarTexto();
+        this.actualizarTexto = this.actualizarTexto.bind(this);
+        window.addEventListener('resize', this.actualizarTexto);
     }
 
     shuffleElements() {
@@ -128,6 +132,7 @@ class Memoria {
 
         const h3 = document.createElement("h3");
         h3.textContent = "Memory Card";
+        
 
         const img = document.createElement("img");
         img.setAttribute("alt", element);
@@ -135,6 +140,7 @@ class Memoria {
 
         article.appendChild(h3);
         article.appendChild(img);
+        
 
         return article;
     }
@@ -173,6 +179,30 @@ class Memoria {
             this.checkForMatch();
         }
 
+    }
+
+
+     actualizarTexto() {
+        const anchoPantalla = window.innerWidth;
+
+        
+        if (anchoPantalla < 180) {
+            this.changeH3Text("");
+        }
+        else if (anchoPantalla < 325) {
+            this.changeH3Text("Card");
+        } else{
+            this.changeH3Text("Memory Card");
+        }
+    }
+
+    changeH3Text(texto){
+        const h3 = document.querySelectorAll('h3'); 
+
+        
+        h3.forEach(element => {
+            element.textContent = texto;
+        });
     }
 
 }

@@ -36,23 +36,29 @@
 		<a href="calendario.html" title="Calendario">Calendario</a>
 		<a href="meteorología.html" title="Meteorologia" >Meteorologia</a>
 		<a href="circuito.html" title="Circuito" >Circuito</a>
-		<a href="viajes.php" title="Viajes">Viajes</a>
+		<a href="php/viajes.php" title="Viajes">Viajes</a>
 		<a href="juegos.html" title="Juegos">Juegos</a>
+		<a href="php/foro.php" title="Foro">Foro</a>
 	</nav>
 
 	
 	</header>
 
-	<P class="migas"><a href="index.html">Inicio</a> >> Noticias</P>
+	<p class="migas"><a href="index.html">Inicio</a> >> Noticias</p>
 	<h2>Noticias</h2>
 
 	<script src="js/noticias.js"></script>
-	<p><input type="file" onchange="noticias.readInputFile(this.files);"></p>
+	<p>
+		<label>Seleccione un archivo:
+			<input type="file" onchange="noticias.readInputFile(this.files);">
+		</label>
+	</p>
+	
+	<p></p>
 
 	<main>
-		<section>
-			
-		<h3>Ultimas noticias</h3>
+		<section class="noticias">
+			<h3>Ultimas noticias</h3>
 		</section>
 	</main>
 

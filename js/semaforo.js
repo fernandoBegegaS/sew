@@ -14,7 +14,7 @@ class Semaforo {
         
         const main = document.querySelector("main");
 
-        const h2 = document.createElement("h3");
+        const h2 = document.createElement("h2");
         h2.textContent = "Semaforo"; 
         main.appendChild(h2);
 
@@ -93,43 +93,39 @@ class Semaforo {
         if (isNaN(milliseconds) || milliseconds < 0) {
             throw new Error("El valor debe ser un número no negativo.");
         }
-        return (milliseconds / 1000).toFixed(2); // Devuelve un número redondeado a 2 decimales
+        return (milliseconds / 1000).toFixed(2); 
     }
-    
     createRecordForm() {
-        // Eliminar el formulario anterior, si existe
         $('article').remove();
     
-        // Crear el nuevo formulario con los campos requeridos
         const form = `
             <article>
-                <p>Registrar puntuación</p>
-    
-                <form id="#" method="post">
-                    <label for="firstName">Nombre:</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Ingrese el nombre" required>
-    
-                    <label for="lastName">Apellidos:</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Ingrese los apellidos" required>
-    
-                    <label for="difficulty">Nivel del juego:</label>
-                    <input type="text" id="difficulty" name="difficulty" value="${this.difficulty}" readonly>
-    
-                    <label for="reactionTime">Tiempo de reacción (en segundos):</label>
-                    <input type="number" id="reactionTime" name="reactionTime" 
-                           value="${this.msToSeconds(this.clic_moment - this.unload_moment)}" readonly>
-                    <span></span>
-    
-                    <button type="submit" id="submitScore">Guardar Puntuación</button>
+                <h3>Registrar puntuación</h3>
+                <form method="post">
+                    <label>
+                        Nombre:
+                        <input type="text" name="firstName" placeholder="Ingrese el nombre" required>
+                    </label>
+                    <label>
+                        Apellidos:
+                        <input type="text" name="lastName" placeholder="Ingrese los apellidos" required>
+                    </label>
+                    <label>
+                        Nivel del juego:
+                        <input type="text" name="difficulty" value="${this.difficulty}" readonly>
+                    </label>
+                    <label>
+                        Tiempo de reacción (en segundos):
+                        <input type="number" name="reactionTime" value="${this.msToSeconds(this.clic_moment - this.unload_moment)}" readonly>
+                    </label>
+                    <button type="submit">Guardar Puntuación</button>
                 </form>
             </article>
         `;
     
-        // Añadir el formulario al contenedor principal
         $('main').append(form);
     }
-    
-}
+}    
 
 const semaforo = new Semaforo();
 semaforo.createStructure();

@@ -32,7 +32,7 @@ class Geolocalizacion {
         
         const img = $("<img>").attr("src", url).attr("alt", "Mapa con tu ubicación");
     
-        const article = $("<article>");
+        const article = $("<article class = 'map'>");
         article.append($("<h2>").text("Mapa Estático"));
         article.append(img);
     
@@ -46,7 +46,7 @@ class Geolocalizacion {
         const article = $("<article>");
         article.append($("<h2>").text("Mapa Dinámico"));
     
-        const divMapa = $("<div id='divMapa'></div>");
+        const divMapa = $("<div></div>");
         article.append(divMapa);
     
         $("main").append(article);
@@ -56,7 +56,7 @@ class Geolocalizacion {
 
 
         var map = new mapboxgl.Map({
-        container: 'divMapa',
+        container:  divMapa[0],
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [longitud, latitud],
         zoom: 10
@@ -78,7 +78,7 @@ class Geolocalizacion {
     }
     
      verErrores(error) {
-        console.error("Error de geolocalización: ", error.message);
+        alert("Error en la geolocalizacion")
     }
 
 }
@@ -89,43 +89,35 @@ class Carrusel{
   añadirFuncioncionalidad(){
         const slides = document.querySelectorAll("img");
 
-// select next slide button
+
 const nextSlide = document.querySelector("button:nth-of-type(1)");
 
-// current slide counter
+
 let curSlide = 3;
-// maximum number of slides
 let maxSlide = slides.length - 1;
 
-// add event listener and navigation functionality
 nextSlide.addEventListener("click", function () {
-  // check if current slide is the last and reset current slide
   if (curSlide === maxSlide) {
     curSlide = 0;
   } else {
     curSlide++;
   }
 
-  //   move slide by -100%
   slides.forEach((slide, indx) => {
   	var trans = 100 * (indx - curSlide);
     $(slide).css('transform', 'translateX(' + trans + '%)')
   });
 });
 
-// select next slide button
 const prevSlide = document.querySelector("button:nth-of-type(2)");
 
-// add event listener and navigation functionality
 prevSlide.addEventListener("click", function () {
-  // check if current slide is the first and reset current slide to last
   if (curSlide === 0) {
     curSlide = maxSlide;
   } else {
     curSlide--;
   }
 
-  //   move slide by 100%
   slides.forEach((slide, indx) => {
   	var trans = 100 * (indx - curSlide);
     $(slide).css('transform', 'translateX(' + trans + '%)')

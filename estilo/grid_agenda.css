@@ -1,18 +1,69 @@
-
-article {
-    margin: 20px;
-    width: auto; 
-    height: auto; 
-    position: relative; 
-    border-radius: 10px; 
-    background: #70a7d4; 
-    padding: 20px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,.3); 
-    cursor: pointer; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+/* Especificidad: 0,0,0,1 */
+section {
+    display: flex;
+    background: #e8f5e9;
+    padding: 2rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-article:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 8px 16px rgba(0,0,0,.4); 
+/* Especificidad: 0,0,1,0 */
+section > h2 {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 0.625rem;
+    color: #000000;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Especificidad: 0,0,1,0 */
+section > article {
+    margin: 0 auto;
+    width: 20rem;
+    border-radius: 0.9375rem;
+    background: #255783;
+    padding: 1.25rem;
+    margin: 0.625rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Especificidad: 0,0,1,0 */
+section > article:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* Especificidad: 0,0,2,0 */
+section > article h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.9375rem;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 0.125rem solid #ffffff;
+    padding-bottom: 0.625rem;
+}
+
+/* Especificidad: 0,0,2,0 */
+section > article p {
+    font-size: 1rem;
+    color: #f5f5f5;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+}
+
+/* Especificidad: 0,0,2,1 */
+section > article p:nth-of-type(4) {
+    font-weight: bold;
+    color: #ffd700;
 }

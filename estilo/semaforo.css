@@ -1,18 +1,20 @@
-
+/* Especificidad: 0,0,0,1 */
 @keyframes changeBackground {
-    from { background-color: #000A; } /* Color inicial */
-    to { background-color: red; } /* Color final */
+    from { background-color: #000A; }
+    to { background-color: red; }
 }
 
+/* Especificidad: 0,0,0,1 */
 @keyframes out {
-    from { background-color: red; } /* Color inicial */
-    to { background-color: #000A; } /* Color final */
+    from { background-color: red; }
+    to { background-color: #000A; }
 }
+
+/* Especificidad: 0,0,0,1 */
 main {
     width: 60%;
     height: 50%;
     margin: auto;
-    
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
@@ -20,103 +22,110 @@ main {
     align-items: center;
 }
 
+/* Especificidad: 0,0,1,1 */
 main > p {
     grid-column: 2 / 4;
     text-align: center;
     grid-row: 1;
-} 
-
-
-
-h2 {
-    grid-column: 2 / -1;
-    text-align: center;
-    grid-row: 1;
 }
 
+/* Especificidad: 0,0,0,1 */
+
+
+/* Especificidad: 0,0,0,1 */
 div {
     background-color: #000A;
-    border: 5px solid black;
+    border: 0.3rem solid black; /* Convertido a rem */
     aspect-ratio: 1;
     border-radius: 50%;
     grid-row: 2;
 }
 
-main >  article{
+/* Especificidad: 0,0,1,1 */
+main > article {
     grid-column: 2 / 4;
     grid-row: 4;
-    display: flex; /* Activa el diseño en fila */
+    display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaciado entre los elementos */
-    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 0.625rem; /* Convertido a rem */
+    align-items: center;
 }
 
-table{
+/* Especificidad: 0,0,0,1 */
+table {
     grid-row: 4;
     grid-column: 2 / 4;
     align-items: center;
 }
 
+/* Especificidad: 0,0,2,1 */
 article > p {
     font-weight: bold;
 }
 
+/* Especificidad: 0,0,0,1 */
 form {
     display: flex;
-    flex-direction: column; /* Alinea los elementos verticalmente */
-    gap: 10px; /* Espaciado entre los elementos */
-    width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
+    flex-direction: column;
+    gap: 0.625rem; /* Convertido a rem */
+    width: 100%;
 }
 
+/* Especificidad: 0,0,1,1 */
 form input, form select, form textarea, form button {
-    width: 100%; /* Hace que los campos de entrada y botones ocupen todo el ancho disponible */
-    padding: 10px;
+    width: 100%;
+    padding: 0.625rem; /* Convertido a rem */
     margin: 0;
-    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total del elemento */
+    box-sizing: border-box;
 }
 
+/* Especificidad: 0,0,0,1 */
 form label {
-    font-weight: bold; /* Para que las etiquetas sean más destacadas */
+    font-weight: bold;
 }
 
-
-
-
+/* Especificidad: 0,0,1,1 */
 main.unload div {
     animation-name: out;
     animation-duration: 0.1s;
     animation-fill-mode: forwards;
 }
 
+/* Especificidad: 0,0,1,1 */
 main.load div {
     animation-name: changeBackground;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
 
+/* Especificidad: 0,0,2,1 */
 main.load div:nth-of-type(1) {
     animation-delay: 0s;
 }
 
+/* Especificidad: 0,0,2,1 */
 main.load div:nth-of-type(2) {
     animation-delay: 0.5s;
 }
 
+/* Especificidad: 0,0,2,1 */
 main.load div:nth-of-type(3) {
     animation-delay: 1s;
 }
 
+/* Especificidad: 0,0,2,1 */
 main.load div:nth-of-type(4) {
     animation-delay: 1.5s;
 }
 
+/* Especificidad: 0,0,2,1 */
 button:first-of-type {
     grid-column: 2 / span 1;
     grid-row: 3;
 }
 
+/* Especificidad: 0,0,2,1 */
 button:nth-of-type(2) {
     grid-column: 3 / span 1;
     grid-row: 3;
 }
-

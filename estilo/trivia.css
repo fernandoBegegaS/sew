@@ -1,70 +1,69 @@
-/* Temporizador */
+/* Especificidad: 0,0,1,1 */
 div:has(> span) {
-    font-size: 1.5em; /* Escalable con el tamaño de fuente base */
+    font-size: 1.5em;
     font-weight: bold;
-    margin: 2em 0; /* Espaciado relativo */
+    margin: 2em 0;
     text-align: center;
 }
 
-/* Article */
+/* Especificidad: 0,0,0,1 */
 article {
-    background: #70a7d4; ;
-    padding: 1em; /* Espaciado relativo */
+    background: #70a7d4;
+    padding: 1em;
     margin: auto;
-    width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+    width: 90%;
     height: max-content;
-    max-width: 40em; /* Máximo de 40em para pantallas grandes */
-    box-shadow: 0 0.25em 0.625em rgba(0, 0, 0, 0.1); /* Valores escalables */
-    border-radius: 0.5em; /* Bordes redondeados con unidades relativas */
+    max-width: 40em;
+    box-shadow: 0 0.25em 0.625em rgba(0, 0, 0, 0.1);
+    border-radius: 0.5em;
 }
 
+/* Especificidad: 0,0,0,1 */
 button {
-    display: inline-block; /* Hace que los botones se alineen uno al lado del otro */
-    margin: 1em; /* Espaciado entre los botones */
-    padding: 0.75em 1.5em; /* Tamaño escalable */
-    font-size: 1em; /* Escalable con la fuente base */
+    display: inline-block;
+    margin: 1em;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
     font-weight: bold;
     color: white;
     background-color: #B30000;
     border: none;
-    border-radius: 0.5em; /* Bordes redondeados escalables */
+    border-radius: 0.5em;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-
-
+/* Especificidad: 0,0,0,1 */
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Cambiar de center a flex-start */
+    justify-content: flex-start;
     min-height: 100vh;
     margin: 0;
-    padding: 1em; /* Añadir algo de padding opcional */
+    padding: 1em;
 }
 
-
-div[data-pregunta] {
-    display: block; /* Asegúrate de que el div sea un contenedor bloque */
-    padding: 0.5em; /* Espaciado interno ajustado */
-    margin: 0.5em 0; /* Espaciado externo */
-    background: #ffffff; /* Fondo blanco */
-    border: 1px solid #ddd;
+/* Especificidad: 0,0,1,1 */
+article[data-pregunta] {
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    background: #ffffff;
+    border: 0.1% solid #ddd;
     border-radius: 0.5em;
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
-    max-width: 40em; /* Limitar ancho máximo */
+    max-width: 40em;
     text-align: left;
 }
 
-div p{
+/* Especificidad: 0,0,0,1 */
+div p {
     font-weight: bold;
     margin-bottom: 1em;
 }
 
-input{
+/* Especificidad: 0,0,0,1 */
+input {
     margin: 1.2em;
 }
-
-
-

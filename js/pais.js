@@ -84,8 +84,10 @@
                         
                         const main = $("<main>");
                         $("body").append(main);
-                        const section = $("<section>");
+                        const section = $("<section class = 'meteorologia'>");
                         main.append(section);
+                        const header = $("<h3>Prediccion</h3>");
+                        section.append(header);
 
 
                         // Ahora generamos el HTML para cada día

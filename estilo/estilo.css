@@ -1,174 +1,293 @@
-/*Fernando Begega Suarez UO295286*/
-
-/*
-
-color: B30000
-
-*/
-
+/* Especificidad: 0,0,0,1 */
 body {
     font-family: "Arial", "Arial Narrow", "Arial Rounded MT Bold", "Century Gothic", "Calibri", sans-serif;
     background-color: #dadada;
     color: #000000;
 }
 
-
-
-p.migas{
-    font-size: 12px;
+/* Especificidad: 0,0,1,1 */
+p.migas {
+    font-size: 0.75rem;
 }
 
+/* Especificidad: 0,1,0,0 */
+@media (max-width: 48rem) {
 
-
-
- @media (max-width: 768px) {
-
+    /* Especificidad: 0,0,1,1 */
     .migas {
-        display: none; /* Oculta las migas de navegación en pantallas pequeñas */
-    }
-        header{
-            flex-direction: column;
-        }
-        nav {
-            flex-wrap: wrap  /* Colocar enlaces en columna en dispositivos móviles */
-        }
-    
-        
+        display: none;
     }
 
-h1{
-    font-weight: 700;
-    margin: 20px;
+    /* Especificidad: 0,0,0,1 */
+    header {
+        flex-direction: column;
+    }
+
+    /* Especificidad: 0,0,0,1 */
+    nav {
+        flex-wrap: wrap;
+    }
 }
 
+/* Especificidad: 0,0,0,1 */
+h1 {
+    font-weight: 700;
+    margin: 1.25rem;
+}
+
+/* Especificidad: 0,0,0,1 */
 header {
-    background-color: #B30000; /* Rojo vibrante */
-    color: #ffffff; /* Texto en blanco para hacer contraste */
+    background-color: #B30000;
+    color: #ffffff;
     width: 100%;
-    padding: 5px;
+    padding: 0.3125rem;
     box-sizing: border-box;
 }
 
-header a:hover{
+/* Especificidad: 0,0,1,1 */
+header a:hover {
     color: #ffffff;
 }
 
-header a{
-    color: #ffffff; /* Gris claro para los enlaces del menú de navegación */
-    text-decoration: none; /* Quitar subrayado por defecto en los enlaces */
+/* Especificidad: 0,0,1,1 */
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    
 }
 
-nav a:hover, nav a:focus{
+/* Especificidad: 0,0,2,1 */
+nav a:hover, nav a:focus {
     text-decoration: underline;
 }
 
-nav a.active{
+/* Especificidad: 0,0,1,1 */
+nav a.active {
     font-weight: 900;
 }
 
-
-ul{
+/* Especificidad: 0,0,0,1 */
+ul {
     list-style-type: circle;
     list-style-position: outside;
 }
-ol{
+
+/* Especificidad: 0,0,0,1 */
+ol {
     list-style-type: upper-roman;
 }
 
-dt{
+/* Especificidad: 0,0,0,1 */
+dt {
     font-weight: 600;
-    border-width: 1px;         
-    border-style: solid;       
+    border-width: 0.0625rem;
+    border-style: solid;
     border-color: #000000;
-    
     width: fit-content;
-    margin: 10px;
+    margin: 0.625rem;
 }
 
-
-table caption{
-    margin: 10px;
+/* Especificidad: 0,0,1,1 */
+table caption {
+    margin: 0.625rem;
     font-weight: 700;
 }
-table{
+
+/* Especificidad: 0,0,0,1 */
+table {
     border-collapse: collapse;
-    border-width: 1px;         
-    border-style: solid;       
+    border-width: 0.0625rem;
+    border-style: solid;
     border-color: #000000;
-    box-shadow: 0 2px 10px #000000;
-    margin: 20px;
+    box-shadow: 0 0.125rem 0.625rem #000000;
+    margin: 1.25rem;
 }
 
-
+/* Especificidad: 0,0,0,1 */
 tr:hover {
-    background-color: #adadad; /* Color de fondo gris claro al pasar el ratón */
+    background-color: #adadad;
 }
 
-th{
-    border-width: 1px;         
-    border-style: solid;       
+/* Especificidad: 0,0,0,1 */
+th {
+    border-width: 0.0625rem;
+    border-style: solid;
     border-color: #000000;
 }
 
-td{
-    border-width: 1px;         
-    border-style: solid;       
+/* Especificidad: 0,0,0,1 */
+td {
+    border-width: 0.0625rem;
+    border-style: solid;
     border-color: #000000;
 }
 
-
-/* Seleccionamos el nav que es hijo directo de section */
+/* Especificidad: 0,0,1,1 */
 section > nav {
     display: flex;
     justify-content: center;
-    gap: 20px;  /* Espaciado entre los enlaces */
-    flex-wrap: wrap;  /* Asegura que los enlaces se ajusten en pantallas pequeñas */
+    gap: 1.25rem;
+    flex-wrap: wrap;
     margin: 0 auto;
 }
 
-/* Estilo para los enlaces dentro del nav hijo de section */
+/* Especificidad: 0,0,2,1 */
 section > nav a {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
-    background-color: #003E80; /* Azul vibrante */
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color: #003E80;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Cambio de color de fondo al pasar el ratón */
+/* Especificidad: 0,0,2,1 */
 section > nav a:hover {
-    background-color: #003E80; /* Azul más oscuro */
-    transform: translateY(-2px);  /* Efecto de levantamiento */
+    background-color: #003E80;
+    transform: translateY(-0.125rem);
 }
 
-/* Cambio de color al estar en foco */
+/* Especificidad: 0,0,2,1 */
 section > nav a:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Resaltado con un borde de color */
+    box-shadow: 0 0 0 0.1875rem rgba(0, 123, 255, 0.5);
 }
 
-/* Estilo para dispositivos pequeños */
-@media (max-width: 600px) {
+/* Especificidad: 0,1,0,0 */
+@media (max-width: 37.5rem) {
+    /* Especificidad: 0,0,1,1 */
     section > nav {
-        flex-direction: column;  /* Apilar los enlaces verticalmente */
+        flex-direction: column;
     }
 }
 
+/* Especificidad: 0,0,1,1 */
+article > div {
+    width: 80%;
+    height: 60vh;
+    margin-bottom: 20%;
+}
+
+/* Especificidad: 0,0,1,1 */
+p:has(> input) {
+    color: #B30000;
+    font-weight: bold;
+}
+
+/* Especificidad: 0,0,1,1 */
+article.carrusel {
+    margin-left: 25%;
+    width: 100%;
+    max-width: 100vh;
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1em;
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel h3 {
+    top: 1%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 5;
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    border-radius: 0.5rem;
+    z-index: 1;
+    position: absolute;
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel button {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel button:active {
+    transform: scale(1.1);
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel button:nth-of-type(2) {
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+  }
+
+/* Especificidad: 0,0,2,1 */
+article.carrusel button:nth-of-type(1) {
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+  }
+
+/* Especificidad: 0,0,1,1 */
+article.map {
+    display: grid;
+    place-items: center;
+    height: auto;
+    margin-top: 5%;
+  }
+
+/* Especificidad: 0,0,1,1 */
+article.map img {
+    max-width: 70%;
+    height: auto;
+    margin-bottom: 10%;
+  }
+
+/* Especificidad: 0,0,1,1 */
+article:has(div) {
+    display: grid;
+    place-items: center;
+    height: auto;
+  }
+
+/* Especificidad: 0,0,1,1 */
+article > div {
+    width: 80%;
+    height: 80vh;
+  }
+
+main > p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000;
+    padding: 3%;
+    background-color: #f4f4f4;
+    border-left: 0.3125rem solid #B30000;
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
 
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
+.mi-svg {
+    width: 200px; /* Ancho deseado */
+    height: auto; /* Mantiene la proporción original */
+}
