@@ -38,7 +38,7 @@ class Usuario {
                         this.createPostSection.show();
                         this.authForm.hide();
 
-                        this.authForm.parent().append("<a href='logout.php' class='logout-link'>Cerrar Sesión</a>");
+                        this.authForm.parent().append("<a href='logout.php'>Cerrar Sesión</a>");
                     }else{
                         console.log(this.authForm)
                         this.authForm.get(0).reset();
@@ -206,7 +206,7 @@ class Usuario {
 
     renderPost(post) {
         const postArticle = $(`
-            <article class='post'>
+            <article >
                 <h3>${post.title}</h3>
                 <p>${post.content}</p>
                 <footer>

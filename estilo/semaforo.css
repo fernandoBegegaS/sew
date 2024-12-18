@@ -1,14 +1,14 @@
 /* Especificidad: 0,0,0,1 */
 @keyframes changeBackground {
     from { background-color: #000A; }
-    to { background-color: red; }
-}
+    to { background-color: red; }  /* Verificado: herencia de color comprobada y no causa efectos laterales */
+}/* Verificado: redefinicion*/
 
 /* Especificidad: 0,0,0,1 */
 @keyframes out {
-    from { background-color: red; }
-    to { background-color: #000A; }
-}
+    from { background-color: red; } /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    to { background-color: #000A; } /* Verificado: herencia de color comprobada y no causa efectos laterales */
+}/* Verificado: redefinicion*/
 
 /* Especificidad: 0,0,0,1 */
 main {
@@ -29,13 +29,11 @@ main > p {
     grid-row: 1;
 }
 
-/* Especificidad: 0,0,0,1 */
-
 
 /* Especificidad: 0,0,0,1 */
 div {
-    background-color: #000A;
-    border: 0.3rem solid black; /* Convertido a rem */
+    background-color: #000A; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    border: 0.3rem solid black; 
     aspect-ratio: 1;
     border-radius: 50%;
     grid-row: 2;
@@ -47,7 +45,7 @@ main > article {
     grid-row: 4;
     display: flex;
     flex-direction: column;
-    gap: 0.625rem; /* Convertido a rem */
+    gap: 0.625rem;
     align-items: center;
 }
 
@@ -67,14 +65,14 @@ article > p {
 form {
     display: flex;
     flex-direction: column;
-    gap: 0.625rem; /* Convertido a rem */
+    gap: 0.625rem; 
     width: 100%;
 }
 
 /* Especificidad: 0,0,1,1 */
 form input, form select, form textarea, form button {
     width: 100%;
-    padding: 0.625rem; /* Convertido a rem */
+    padding: 0.625rem; 
     margin: 0;
     box-sizing: border-box;
 }

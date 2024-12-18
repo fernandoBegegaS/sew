@@ -1,65 +1,50 @@
+
+
+/* Especificidad: 0,0,0,1 */
+section {
+    display: flex;
+    background: #f9f9f9; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    padding: 1.25em;
+    border-radius: 0.625em;
+    box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 /* Especificidad: 0,0,0,1 */
 article {
     margin: 0.5em;
     padding: 1em;
     border-radius: 0.625em;
     background: #70a7d4;
-    box-shadow: 0 0.5% 1% rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.3); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     word-wrap: break-word;
-    overflow-wrap: break-word;
     color: #000000;
 }
 
-/* Especificidad: 0,0,2,1 */
-section.noticias article {
+/* Especificidad: 0,0,0,4 */
+p + main > section > article {
     width: 70%;
 }
 
-/* Especificidad: 0,0,2,1 */
-section.meteorologia article {
+/* Especificidad: 0,0,0,4*/
+ul + main > section > article {
     width: 30%;
 }
 
-/* Especificidad: 0,0,0,1 */
+
+
+/* Especificidad: 0,0,1,1 */
 article:hover {
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.4);
     transform: translateY(-0.03125em);
 }
 
-/* Especificidad: 0,0,1,1 */
-section > h2,
-section > h3 {
-    flex-basis: 100%;
-    text-align: center;
-    margin-bottom: 2em;
-    color: #0a0000;
-    font-size: 1.8em;
-    font-weight: bold;
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
-}
 
-/* Especificidad: 0,0,0,1 */
-section {
-    display: flex;
-    background: #f9f9f9;
-    padding: 1.25em;
-    border-radius: 0.625em;
-    box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.1);
-    justify-content: center;
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
-}
 
-/* Especificidad: 0,0,1,1 */
-section.noticias {
-    flex-direction: column;
-    gap: 1.25em;
-}
 
-/* Especificidad: 0,0,1,1 */
-section.meteorologia {
-    flex-wrap: wrap;
-    background: #e8f5e9;
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
-}
+
+

@@ -54,10 +54,9 @@
                         const pronosticosPorDia = {};
             
                         $(datos).find('time').each(function() {
-                            const fechaIntervalo = $(this).attr('from').split('T')[0]; // Extraemos la fecha (sin hora)
-                            const hora = $(this).attr('from').split('T')[1].split(':')[0]; // Extraemos la hora del intervalo (en formato 24 horas)
+                            const fechaIntervalo = $(this).attr('from').split('T')[0]; 
+                            const hora = $(this).attr('from').split('T')[1].split(':')[0]; 
             
-                            // Si la hora es 15 (3 PM), extraemos la información
                             if (hora === '12') {
                                 const temperaturaMax = parseFloat($(this).find('temperature').attr('max'));
                                 const temperaturaMin = parseFloat($(this).find('temperature').attr('min'));
@@ -65,10 +64,9 @@
                                 const condiciones = $(this).find('symbol').attr('name'); 
                                 const iconoCodigo = $(this).find('symbol').attr('var'); 
             
-                                // Construimos la URL para el ícono del clima
                                 const iconoURL = `multimedia/imagenes/${iconoCodigo}@2x.png`;
             
-                                // Almacenamos los datos en el objeto pronosticosPorDia, solo si no está ya presente
+                               
                                 if (!pronosticosPorDia[fechaIntervalo]) {
                                     pronosticosPorDia[fechaIntervalo] = {
                                         max: temperaturaMax,
@@ -84,13 +82,12 @@
                         
                         const main = $("<main>");
                         $("body").append(main);
-                        const section = $("<section class = 'meteorologia'>");
+                        const section = $("<section>");
                         main.append(section);
                         const header = $("<h3>Prediccion</h3>");
                         section.append(header);
 
-
-                        // Ahora generamos el HTML para cada día
+                        
                         for (let fecha in pronosticosPorDia) {
                             const temperaturaMax = pronosticosPorDia[fecha].max;
                             const temperaturaMin = pronosticosPorDia[fecha].min;

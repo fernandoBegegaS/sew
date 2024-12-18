@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Circuito</name>
+    <Style id="lineaRojaGruesa">
+      <LineStyle>
+        <color>ff0000ff</color> <!-- Color rojo (AABBGGRR) -->
+        <width>5</width> <!-- Grosor de la línea -->
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Tramo del circuito</name>
+      <styleUrl>#lineaRojaGruesa</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate> <!-- Permite ajustar la línea al terreno -->
+        <coordinates>
+          4.541319582806471,52.38973166691918,16 4.543417899196314,52.39179545792096,17 4.542871829276532,52.38919985457926,17 4.541142209931024,52.38835065458435,17 4.546958464569617,52.38827277668089,17 4.549373389531119,52.38894113003694,16 4.552966511650139,52.3883140280625,17 4.550947501121114,52.38573856042974,17 4.548141190104107,52.38648986774366,20 4.551035871989537,52.38778482923022,20 4.544502185090964,52.38743698576371,24 4.543134226156416,52.38711641911867,17 4.542336658826216,52.38745762933378,17 4.542393403342322,52.38457634644304,15 4.5402828,52.3843918,18 4.53878211970861,52.38523151602487,16 4.541319582806471,52.38973166691918,17
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

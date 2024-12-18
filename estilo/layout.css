@@ -5,16 +5,18 @@ header {
     justify-content: center;
     display: flex;
     align-items: center;
-    gap: 1.25rem; /* Convertido de 20px a rem */
+    gap: 1.25rem;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,0,2 */
 h1 + nav {
     display: flex;
-    gap: 1.25rem; /* Convertido de 20px a rem */
+    gap: 1.25rem; 
 }
+
+
 
 
 

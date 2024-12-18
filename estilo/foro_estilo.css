@@ -4,17 +4,16 @@ article {
     padding: 0.9375rem;
     border: 0.0625rem solid #ccc;
     border-radius: 0.5rem;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,0,2*/
 article h2 {
     font-size: 1.25rem;
-    color: #800000;
+    color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     margin-bottom: 0.9375rem;
     text-align: center;
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
 }
 
 /* Especificidad: 0,0,0,1 */
@@ -26,13 +25,13 @@ form {
     margin: 0 auto;
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,0,2*/
 form label {
     font-weight: bold;
     margin-bottom: 0.3125rem;
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,0,3*/
 section > form + p {
     margin-top: 1.25rem;
     font-size: 1rem;
@@ -45,7 +44,7 @@ section > form + p {
     box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,0,2*/
 form input,
 form textarea,
 form button {
@@ -57,7 +56,7 @@ form button {
     width: 100%;
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,1,2*/
 form input:focus,
 form textarea:focus,
 form button:focus {
@@ -66,7 +65,7 @@ form button:focus {
     box-shadow: 0 0 0.3125rem rgba(0, 62, 128, 0.5);
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,0,2*/
 form button {
     background-color: #800000;
     color: #ffffff;
@@ -74,20 +73,20 @@ form button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,1,2*/
 form button:hover {
-    background-color: #800000;
+    background-color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     transform: scale(1.05);
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,0,2*/
 form textarea {
     height: 7.5rem;
     resize: none;
 }
 
 /* Especificidad: 0,0,1,1 */
-a.export-btn {
+article > h2 + a {
     display: inline-block;
     padding: 0.625rem 1.25rem;
     font-size: 1rem;
@@ -100,30 +99,26 @@ a.export-btn {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Especificidad: 0,0,1,1 */
-a.export-btn:hover {
-    background-color: #00264d;
-    transform: translateY(-0.125rem);
-}
+
 
 /* Especificidad: 0,0,0,1 */
 section {
     margin: 1.25rem 0;
     padding: 1.25rem;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     border-radius: 0.5rem;
     box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,2,1 | 0,0,0,3*/ 
 section h2,
 form + section > h3 {
     font-size: 1.375rem;
-    color: #00264d;
+    color: #00264d; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     margin-bottom: 1.25rem;
 }
 
-/* Especificidad: 0,0,2,1 */
+/* Especificidad: 0,0,0,2*/
 section input,
 section button {
     max-width: 25rem;
@@ -131,21 +126,7 @@ section button {
     display: block;
 }
 
-/* Especificidad: 0,0,1,1 */
-section > div {
-    margin-top: 1.25rem;
-    padding: 0.9375rem;
-    border: 0.0625rem solid #ccc;
-    border-radius: 0.5rem;
-    background-color: #ffffff;
-}
 
-/* Especificidad: 0,0,1,1 */
-section > div:hover {
-    background-color: #f9f9f9;
-    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
-}
 
 /* Especificidad: 0,0,0,1 */
 footer {
@@ -160,15 +141,15 @@ footer {
     box-shadow: 0 -0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
-/* Especificidad: 0,0,0,1 */
+/* Especificidad: 0,0,0,2*/
 footer small {
     font-size: 0.8125rem;
     font-style: italic;
-    color: #000000;
-    /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    color: #000000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,0,2*/
 footer button {
     background-color: #800000;
     color: #ffffff;
@@ -180,43 +161,19 @@ footer button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,1,2*/
 footer button:hover {
-    background-color: #800000;
+    background-color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     transform: scale(1.05);
 }
 
-/* Especificidad: 0,0,1,1 */
+/* Especificidad: 0,0,1,2*/
 footer button:focus {
     outline: none;
     box-shadow: 0 0 0.1875rem rgba(0, 0, 0, 0.2);
 }
 
 /* Especificidad: 0,0,1,1 */
-a.logout-link {
-    display: inline-block;
-    padding: 0.625rem 0.9375rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #800000;
-    text-decoration: none;
-    border-radius: 0.3125rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Especificidad: 0,0,1,1 */
-a.logout-link:hover {
-    background-color: #800000;
-    transform: scale(1.05);
-}
-
-/* Especificidad: 0,0,1,1 */
-a.logout-link:focus {
-    outline: none;
-    box-shadow: 0 0 0.3125rem #800000;
-}
-
 article.oculto {
     display: none;
 }

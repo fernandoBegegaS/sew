@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     </article>
     <article>
         <h2>Exportar Publicaciones</h2>
-        <a href="export_csv.php" class="export-btn">Exportar Publicaciones</a>
+        <a href="export_csv.php" >Exportar Publicaciones</a>
     </article>
     
         <section>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             </form>
             <p></p>
             <?php else: ?>
-                <a href="logout.php" class="logout-link">Cerrar Sesión</a>
+                <a href="logout.php" >Cerrar Sesión</a>
             <?php endif; ?>
         </section>
 
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             </form>
 
             <section>
-            
+             <h3>Publicaciones</h3>
                     
             </section>
                

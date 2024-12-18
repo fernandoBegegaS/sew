@@ -28,12 +28,13 @@ class Carrusel {
         $respuesta = file_get_contents($url);
         $json = json_decode($respuesta);
 
+        echo "<div></div>";
         echo '<article class="carrusel">';
         echo '<h3>Carrusel de Imágenes</h3>';
-
+        
         foreach ($json->photos->photo as $photo) {
             if (isset($photo->server, $photo->id, $photo->secret)) {
-                $photoUrl = "https://live.staticflickr.com/{$photo->server}/{$photo->id}_{$photo->secret}_c.jpg";
+                $photoUrl = "https://live.staticflickr.com/{$photo->server}/{$photo->id}_{$photo->secret}_q.jpg";
             } else {
                 $photoUrl = 'https://via.placeholder.com/300';
             }
@@ -53,7 +54,7 @@ class Carrusel {
 class Moneda {
     protected $local;
     protected $cambio;
-    protected $apiKey = "YOUR_API_KEY";
+    protected $apiKey = "";
 
     public function __construct($local, $cambio) {
         $this->local = $local;
@@ -85,15 +86,21 @@ class Moneda {
 <!DOCTYPE HTML>
 <html lang="es">
 <head>
-    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
-    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+    
     <link rel="icon" href="../multimedia/imagenes/favicon.ico"/>
     <meta charset="UTF-8"/>
     <meta name="author" content="Fernando Begega Suarez"/>
-    <meta name="description" content="aquí cada documento debe tener la descripción del contenido concreto del mismo"/>
-    <meta name="keywords" content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas" />
+    <meta name="description" content="Pagina viajes de la f1"/>
+    <meta name="keywords" content="ubicacion,viaje,mapa,moneda,carrusel" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+
     <title>F1Desktop viajes</title>
 </head>
 <body>

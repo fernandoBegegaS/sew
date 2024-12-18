@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Programa que convierte las coordenadas de un archivo XML de circuitos
 en un archivo SVG que representa la altimetría del circuito.
@@ -9,7 +9,6 @@ en un archivo SVG que representa la altimetría del circuito.
 import xml.etree.ElementTree as ET
 
 def obtenerAltimetria(archivoXML, expresionXPath, namespaces):
-    """Obtiene una lista de pares (distancia acumulada, altitud) del archivo XML."""
     altimetria = []
     distancia_acumulada = 0
 
@@ -24,7 +23,7 @@ def obtenerAltimetria(archivoXML, expresionXPath, namespaces):
 
     raiz = arbol.getroot()
 
-    # Recorrer los elementos del árbol para obtener las altitudes
+   
     for tramo in raiz.findall(expresionXPath, namespaces):
         distancia = tramo.find('ns:Distancia', namespaces)
         altitud = tramo.find('ns:CoordenadasFinales/ns:Altitud', namespaces)
@@ -41,12 +40,9 @@ def crearArchivoSVG(altimetria, archivoSVG):
         print("No hay datos de altimetría para generar el archivo SVG.")
         return
 
-    # Determinar dimensiones del SVG
-    ancho = 800  # Ancho total del SVG
-    alto = 200   # Alto total del SVG
-    margen = 20  # Margen alrededor del contenido
-
-    # Escalado de los datos
+    ancho = 800  
+    alto = 200   
+    margen = 20 
     max_distancia = max(p[0] for p in altimetria)
     max_altitud = max(p[1] for p in altimetria)
     min_altitud = min(p[1] for p in altimetria)
@@ -54,14 +50,13 @@ def crearArchivoSVG(altimetria, archivoSVG):
     escala_x = (ancho - 2 * margen) / max_distancia
     escala_y = (alto - 2 * margen) / (max_altitud - min_altitud)
 
-    # Generar puntos escalados
     puntos_svg = [
         (margen + distancia * escala_x, 
          alto - margen - (altitud - min_altitud) * escala_y)
         for distancia, altitud in altimetria
     ]
 
-    # Crear el contenido SVG
+    
     svg_content = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {ancho} {alto}" width="{ancho}" height="{alto}">
   <rect width="100%" height="100%" fill="white" />
@@ -72,7 +67,7 @@ def crearArchivoSVG(altimetria, archivoSVG):
   </text>
 </svg>'''
 
-    # Escribir el contenido en el archivo SVG
+    
     with open(archivoSVG, 'w', encoding='utf-8') as file:
         file.write(svg_content)
 
@@ -84,13 +79,11 @@ def main():
     print("Generando archivo SVG de altimetría a partir de las coordenadas del XML...")
 
     miArchivoXML = 'circuitoEsquema.xml'
-    miExpresionXPath = './/ns:Tramo'  # Expresión XPath con prefijo 'ns'
-    namespaces = {'ns': 'http://www.uniovi.es'}  # Asignación manual del prefijo
-
-    # Obtener los datos de altimetría
+    miExpresionXPath = './/ns:Tramo'  
+    namespaces = {'ns': 'http://www.uniovi.es'} 
     altimetria = obtenerAltimetria(miArchivoXML, miExpresionXPath, namespaces)
 
-    # Crear el archivo SVG
+    
     miArchivoSVG = 'altimetria.svg'
     crearArchivoSVG(altimetria, miArchivoSVG)
 

@@ -86,12 +86,12 @@ class Circuito {
                 const parser = new DOMParser();
                 const kml = parser.parseFromString(kmlString, "application/xml");
 
-                const geojson = toGeoJSON.kml(kml);
+                const geojson = this.kmlToGeoJSON(kml);
 
                 try{
                     this.mostrarMapa(geojson);
                 }catch(error){
-                     this.añadirTextoError(1,"Tipo de archivo incorrecto");
+                    this.añadirTextoError(1,"Tipo de archivo incorrecto");
                 }
 
             };
@@ -144,6 +144,87 @@ class Circuito {
             map.fitBounds(bounds, { padding: 20 });
         });
     }
+
+    kmlToGeoJSON(kmlString) {
+        var parser = new DOMParser();
+        var kml = typeof kmlString === "string" ? parser.parseFromString(kmlString, "application/xml") : kmlString;
+    
+        var geojson = {
+            type: "FeatureCollection",
+            features: []
+        };
+    
+        function parseCoordinates(coordinateString) {
+            var coords = coordinateString.trim().split(/\s+/);
+            var result = [];
+            for (var i = 0; i < coords.length; i++) {
+                var parts = coords[i].split(",");
+                var lon = parseFloat(parts[0]);
+                var lat = parseFloat(parts[1]);
+                var alt = 0;
+                if (parts[2]) {
+                alt = parseFloat(parts[2]);
+                }
+                result[i] = [lon, lat, alt];
+            }
+            return result;
+        }
+    
+        var placemarks = kml.getElementsByTagName("Placemark");
+        for (var i = 0; i < placemarks.length; i++) {
+            var placemark = placemarks[i];
+            var feature = {
+                type: "Feature",
+                properties: {},
+                geometry: null
+            };
+    
+            var nameNode = placemark.getElementsByTagName("name")[0];
+            var descNode = placemark.getElementsByTagName("description")[0];
+            if (nameNode) {
+                feature.properties.name = nameNode.textContent;
+            }
+            if (descNode) {
+                feature.properties.description = descNode.textContent;
+            }
+    
+            var point = placemark.getElementsByTagName("Point")[0];
+            var lineString = placemark.getElementsByTagName("LineString")[0];
+            var polygon = placemark.getElementsByTagName("Polygon")[0];
+    
+            if (point) {
+                var pointCoordsText = point.getElementsByTagName("coordinates")[0].textContent;
+                var pointCoords = parseCoordinates(pointCoordsText);
+                feature.geometry = {
+                    type: "Point",
+                    coordinates: pointCoords[0]
+                };
+            } else if (lineString) {
+                var lineCoordsText = lineString.getElementsByTagName("coordinates")[0].textContent;
+                var lineCoords = parseCoordinates(lineCoordsText);
+                feature.geometry = {
+                    type: "LineString",
+                    coordinates: lineCoords
+                };
+            } else if (polygon) {
+                var outerBoundary = polygon.getElementsByTagName("outerBoundaryIs")[0];
+                var linearRing = outerBoundary.getElementsByTagName("LinearRing")[0];
+                var polyCoordsText = linearRing.getElementsByTagName("coordinates")[0].textContent;
+                var polyCoords = parseCoordinates(polyCoordsText);
+                feature.geometry = {
+                    type: "Polygon",
+                    coordinates: [polyCoords]
+                };
+            }
+    
+            if (feature.geometry) {
+                geojson.features[i] = feature;
+            }
+        }
+    
+        return geojson;
+    }
+    
 
     readInputFileSVG(files) {
         const archivo = files[0];

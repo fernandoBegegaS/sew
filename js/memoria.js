@@ -1,6 +1,5 @@
 class Memoria {
     constructor() {
-        // Definición del objeto JSON elements
         this.elements = [ {
             "element": "RedBull",
             "source": "multimedia/imagenes/Red_Bull_Racing_logo.svg"
@@ -187,7 +186,7 @@ class Memoria {
 
         
         if (anchoPantalla < 180) {
-            this.changeH3Text("");
+            this.changeH3Text("C");
         }
         else if (anchoPantalla < 325) {
             this.changeH3Text("Card");

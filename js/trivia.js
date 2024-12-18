@@ -141,11 +141,11 @@ class Trivia {
       this.numeroPreguntas = 10;
       this.index = 0;
       this.aciertos = 0;
-      this.timeLeft = 10;
-      this.correctSound = new Audio('multimedia/audios/acierto.mp3');
-      this.errorSound = new Audio('multimedia/audios/error.mp3');
+      this.timeLeft = 20;
+      this.correctSound = new Audio('../multimedia/audios/acierto.mp3');
+      this.errorSound = new Audio('../multimedia/audios/error.mp3');
 
-      $('div > span').text(""+this.timeLeft);
+      $('p > span').text(""+this.timeLeft);
   }
 
   shuffleElements() {
@@ -158,7 +158,7 @@ class Trivia {
   construirHTMLPregunta() {
     const pregunta = this.elements[this.index];
 
-    $('article').find('div[data-pregunta]').remove();
+    $('article').find('article[data-pregunta]').remove();
 
     const preguntaHTML = `
       <article data-pregunta="${this.index}">
@@ -211,13 +211,9 @@ class Trivia {
 
   iniciarTemporizador() {
     let tiempoGuardado = sessionStorage.getItem('tiempoRestante');
-    if (tiempoGuardado === null || 0 >= tiempoGuardado) {
-      this.timeLeft = 10;
-    } else {
-      this.timeLeft = parseInt(tiempoGuardado);
-    }
+    this.timeLeft = 20;
 
-    $('div > span').text(`${this.timeLeft} segundos`);
+    $('p > span').text(`${this.timeLeft} segundos`);
 
     if (this.timer) {
       clearInterval(this.timer);
@@ -242,7 +238,7 @@ class Trivia {
   reiniciarTemporizador() {
     sessionStorage.setItem('tiempoRestante', this.timeLeft);
 
-    $('div > span').text(`${this.timeLeft} segundos`);
+    $('p > span').text(`${this.timeLeft} segundos`);
 
     if (this.timer) {
       clearInterval(this.timer);
@@ -256,7 +252,7 @@ class Trivia {
 
   funcionIntervalo(){
     this.timeLeft--;
-      $('div > span').text(`${this.timeLeft} segundos`);
+      $('p > span').text(`${this.timeLeft} segundos`);
 
       sessionStorage.setItem('tiempoRestante', this.timeLeft);
 

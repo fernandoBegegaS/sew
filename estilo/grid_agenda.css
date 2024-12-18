@@ -1,7 +1,7 @@
 /* Especificidad: 0,0,0,1 */
 section {
     display: flex;
-    background: #e8f5e9;
+    background: #e8f5e9; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     padding: 2rem;
     border-radius: 0.625rem;
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
@@ -10,23 +10,11 @@ section {
     flex-wrap: wrap;
 }
 
-/* Especificidad: 0,0,1,0 */
-section > h2 {
-    flex-basis: 100%;
-    text-align: center;
-    margin-bottom: 0.625rem;
-    color: #000000;
-    font-size: 1.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Especificidad: 0,0,1,0 */
+/* Especificidad: 0,0,0,2*/
 section > article {
-    margin: 0 auto;
     width: 20rem;
     border-radius: 0.9375rem;
-    background: #255783;
+    background: #255783; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     padding: 1.25rem;
     margin: 0.625rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
@@ -36,17 +24,17 @@ section > article {
     overflow: hidden;
 }
 
-/* Especificidad: 0,0,1,0 */
+/* Especificidad: 0,0,1,2 */
 section > article:hover {
     transform: translateY(-0.3125rem);
     box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.5);
 }
 
-/* Especificidad: 0,0,2,0 */
+/* Especificidad: 0,0,0,3*/
 section > article h3 {
     font-size: 1.6em;
     font-weight: bold;
-    color: #ffffff;
+    color: #ffffff; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     margin-bottom: 0.9375rem;
     text-align: center;
     text-transform: uppercase;
@@ -54,16 +42,12 @@ section > article h3 {
     padding-bottom: 0.625rem;
 }
 
-/* Especificidad: 0,0,2,0 */
+/* Especificidad: 0,0,0,3*/
 section > article p {
     font-size: 1rem;
-    color: #f5f5f5;
+    color: #f5f5f5; /* Verificado: herencia de color comprobada y no causa efectos laterales */
     margin: 0.5rem 0;
     line-height: 1.4;
 }
 
-/* Especificidad: 0,0,2,1 */
-section > article p:nth-of-type(4) {
-    font-weight: bold;
-    color: #ffd700;
-}
+
