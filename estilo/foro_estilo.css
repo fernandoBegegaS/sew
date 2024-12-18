@@ -1,0 +1,179 @@
+/* Especificidad: 0,0,0,1 */
+article {
+    margin: 1.25rem 0;
+    padding: 0.9375rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+/* Especificidad: 0,0,0,2*/
+article h2 {
+    font-size: 1.25rem;
+    color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    margin-bottom: 0.9375rem;
+    text-align: center;
+}
+
+/* Especificidad: 0,0,0,1 */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem;
+    max-width: 37.5rem;
+    margin: 0 auto;
+}
+
+/* Especificidad: 0,0,0,2*/
+form label {
+    font-weight: bold;
+    margin-bottom: 0.3125rem;
+}
+
+/* Especificidad: 0,0,0,3*/
+section > form + p {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 0.625rem 0.9375rem;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+/* Especificidad: 0,0,0,2*/
+form input,
+form textarea,
+form button {
+    padding: 0.625rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Especificidad: 0,0,1,2*/
+form input:focus,
+form textarea:focus,
+form button:focus {
+    outline: none;
+    border-color: #003E80;
+    box-shadow: 0 0 0.3125rem rgba(0, 62, 128, 0.5);
+}
+
+/* Especificidad: 0,0,0,2*/
+form button {
+    background-color: #800000;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Especificidad: 0,0,1,2*/
+form button:hover {
+    background-color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    transform: scale(1.05);
+}
+
+/* Especificidad: 0,0,0,2*/
+form textarea {
+    height: 7.5rem;
+    resize: none;
+}
+
+/* Especificidad: 0,0,1,1 */
+article > h2 + a {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #003E80;
+    text-decoration: none;
+    border-radius: 0.3125rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+
+/* Especificidad: 0,0,0,1 */
+section {
+    margin: 1.25rem 0;
+    padding: 1.25rem;
+    background-color: #f0f0f0; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+/* Especificidad: 0,0,2,1 | 0,0,0,3*/ 
+section h2,
+form + section > h3 {
+    font-size: 1.375rem;
+    color: #00264d; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    margin-bottom: 1.25rem;
+}
+
+/* Especificidad: 0,0,0,2*/
+section input,
+section button {
+    max-width: 25rem;
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+/* Especificidad: 0,0,0,1 */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    background-color: #f5f5f5;
+    color: #333333;
+    font-size: 0.875rem;
+    border-top: 0.0625rem solid #ccc;
+    box-shadow: 0 -0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+/* Especificidad: 0,0,0,2*/
+footer small {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: #000000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    
+}
+
+/* Especificidad: 0,0,0,2*/
+footer button {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 0.9375rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Especificidad: 0,0,1,2*/
+footer button:hover {
+    background-color: #800000; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    transform: scale(1.05);
+}
+
+/* Especificidad: 0,0,1,2*/
+footer button:focus {
+    outline: none;
+    box-shadow: 0 0 0.1875rem rgba(0, 0, 0, 0.2);
+}
+
+/* Especificidad: 0,0,1,1 */
+article.oculto {
+    display: none;
+}

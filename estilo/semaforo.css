@@ -1,0 +1,129 @@
+/* Especificidad: 0,0,0,1 */
+@keyframes changeBackground {
+    from { background-color: #000A; }
+    to { background-color: red; }  /* Verificado: herencia de color comprobada y no causa efectos laterales */
+}/* Verificado: redefinicion*/
+
+/* Especificidad: 0,0,0,1 */
+@keyframes out {
+    from { background-color: red; } /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    to { background-color: #000A; } /* Verificado: herencia de color comprobada y no causa efectos laterales */
+}/* Verificado: redefinicion*/
+
+/* Especificidad: 0,0,0,1 */
+main {
+    width: 60%;
+    height: 50%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5% 3%;
+    align-items: center;
+}
+
+/* Especificidad: 0,0,1,1 */
+main > p {
+    grid-column: 2 / 4;
+    text-align: center;
+    grid-row: 1;
+}
+
+
+/* Especificidad: 0,0,0,1 */
+div {
+    background-color: #000A; /* Verificado: herencia de color comprobada y no causa efectos laterales */
+    border: 0.3rem solid black; 
+    aspect-ratio: 1;
+    border-radius: 50%;
+    grid-row: 2;
+}
+
+/* Especificidad: 0,0,1,1 */
+main > article {
+    grid-column: 2 / 4;
+    grid-row: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    align-items: center;
+}
+
+/* Especificidad: 0,0,0,1 */
+table {
+    grid-row: 4;
+    grid-column: 2 / 4;
+    align-items: center;
+}
+
+/* Especificidad: 0,0,2,1 */
+article > p {
+    font-weight: bold;
+}
+
+/* Especificidad: 0,0,0,1 */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem; 
+    width: 100%;
+}
+
+/* Especificidad: 0,0,1,1 */
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 0.625rem; 
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Especificidad: 0,0,0,1 */
+form label {
+    font-weight: bold;
+}
+
+/* Especificidad: 0,0,1,1 */
+main.unload div {
+    animation-name: out;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+}
+
+/* Especificidad: 0,0,1,1 */
+main.load div {
+    animation-name: changeBackground;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+/* Especificidad: 0,0,2,1 */
+main.load div:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+/* Especificidad: 0,0,2,1 */
+main.load div:nth-of-type(2) {
+    animation-delay: 0.5s;
+}
+
+/* Especificidad: 0,0,2,1 */
+main.load div:nth-of-type(3) {
+    animation-delay: 1s;
+}
+
+/* Especificidad: 0,0,2,1 */
+main.load div:nth-of-type(4) {
+    animation-delay: 1.5s;
+}
+
+/* Especificidad: 0,0,2,1 */
+button:first-of-type {
+    grid-column: 2 / span 1;
+    grid-row: 3;
+}
+
+/* Especificidad: 0,0,2,1 */
+button:nth-of-type(2) {
+    grid-column: 3 / span 1;
+    grid-row: 3;
+}
