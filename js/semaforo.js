@@ -100,27 +100,28 @@ class Semaforo {
     
         const form = `
             <article>
-                <h3>Registrar puntuación</h3>
+            <h3>Registrar puntuación</h3>
                 <form method="post">
-                    <label>
-                        Nombre:
-                        <input type="text" name="firstName" placeholder="Ingrese el nombre" required>
-                    </label>
-                    <label>
-                        Apellidos:
-                        <input type="text" name="lastName" placeholder="Ingrese los apellidos" required>
-                    </label>
-                    <label>
-                        Nivel del juego:
-                        <input type="text" name="difficulty" value="${this.difficulty}" readonly>
-                    </label>
-                    <label>
-                        Tiempo de reacción (en segundos):
-                        <input type="number" name="reactionTime" value="${this.msToSeconds(this.clic_moment - this.unload_moment)}" readonly>
-                    </label>
+                    <p>
+                        <label for="firstName">Nombre:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Ingrese el nombre" required>
+                    </p>
+                    <p>
+                        <label for="lastName">Apellidos:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Ingrese los apellidos" required>
+                    </p>
+                    <p>
+                        <label for="difficulty">Nivel del juego:</label>
+                        <input type="text" id="difficulty" name="difficulty" value="${this.difficulty}" readonly>
+                    </p>
+                    <p>
+                        <label for="reactionTime">Tiempo de reacción (en segundos):</label>
+                        <input type="number" id="reactionTime" name="reactionTime" value="${this.msToSeconds(this.clic_moment - this.unload_moment)}" readonly>
+                    </p>
                     <button type="submit">Guardar Puntuación</button>
                 </form>
             </article>
+
         `;
     
         $('main').append(form);

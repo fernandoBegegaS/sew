@@ -47,9 +47,8 @@
 
 	<script src="js/noticias.js"></script>
 	<p>
-		<label>Seleccione un archivo:
-			<input type="file" onchange="noticias.readInputFile(this.files);">
-		</label>
+		<label for="archivo">Selecciona un archivo para subir:</label>
+		<input type="file" id="archivo" onchange="noticias.readInputFile(this.files);">
 	</p>
 	
 	<p></p>

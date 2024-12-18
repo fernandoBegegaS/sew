@@ -69,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     
     <meta charset="UTF-8"/>
     <meta name="author" content="Fernando Begega Suarez"/>
-    <meta name="description" content="Descripción del contenido concreto del documento"/>
-    <meta name="keywords" content="palabras, clave, separadas, por, comas" />
+    <meta name="description" content="Foro sobre f1"/>
+    <meta name="keywords" content="coches,preguntas,post,publicaciones" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>F1 Desktop Foro</title>
